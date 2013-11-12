@@ -1,0 +1,29 @@
+export WORKDIR=$(pwd)
+
+OS=raspbian
+DISTRIBUTION=wheezy
+
+APTCACHE=$WORKDIR/cache/$OS/$DISTRIBUTION
+BASETGZ=$WORKDIR/$OS_$DISTRIBUTION.tgz
+BUILDPLACE=$WORKDIR/build/
+BUILDRESULT=$WORKDIR/result/$OS/$DISTRIBUTION
+#HOOKDIR=$WORKDIR/hook/
+
+#MIRRORSITE=http://archive.raspbian.org/raspbian/
+MIRRORSITE=http://mirror.netcologne.de/raspbian/raspbian/
+COMPONENTS="main"
+DEBOOTSTRAPOPTS=( '--variant=buildd' '--no-check-gpg' )
+DEBOOTSTRAP=qemu-debootstrap
+ARCHITECTURE=armhf
+
+# Using results
+# * use apt-ftparchive to make the rules folder a local apt repository
+# * google for the hook which can update your results folder automaticly after finished builds
+#OTHERMIRROR="deb file://$BUILDRESULT ./"
+#BINDMOUNTS=$BUILDRESULT
+#EXTRAPACKAGES="apt-utils"
+#ALLOWUNTRUSTED=yes
+
+# Tuning
+DEBBUILDOPTS="-j1"
+
