@@ -16,6 +16,12 @@ sudo apt-get install pbuilder qemu-user-static
 nano raspbian.pbuilderrc
 ``` 
 
+* Add the folders "build", "cache", "hook" and "result":
+
+```
+mkdir build  cache  hook  result
+```
+
 * Create a base-system, by
 
 ```
